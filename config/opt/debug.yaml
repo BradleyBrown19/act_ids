@@ -1,0 +1,9 @@
+# @package _global_
+
+timing_verbose: True 
+
+trainer:
+  logger: null
+  callbacks: null
+  overfit_batches: 1
+  num_sanity_val_steps: 0

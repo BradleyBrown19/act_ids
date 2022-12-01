@@ -1,0 +1,42 @@
+# @package _global_
+
+defaults:
+  - math_equations
+
+name: math_equations_id_${operation}_${mod_prime}_${add_to_name}
+
+timing_verbose: False
+
+combined_total_per_class: 1000
+
+training_loop:
+  config:
+    id_estimation: ${id_estimation}
+
+id_estimation:
+  layers: [transformer.h.0.attn, transformer.h.0.mlp, transformer.h.1.mlp, transformer.h.1.attn]
+  combined_total_per_class: ${combined_total_per_class}
+  num_per_class: 1000
+
+  timing_verbose: ${timing_verbose}
+
+  max_epochs: ${max_epochs}
+
+  fraction: 0.9
+  nres: 20
+
+  estimate_id_every: 500
+  estimate_initial_id: True
+  estimate_data_id: False
+  do_steps: True
+  estimate_train_id: True
+  estimate_class_id: False
+  no_restrict: True
+
+  
+  save_path: ${save_dir}/id_estimates.pkl
+
+  dataloader:
+    batch_size: 512
+    shuffle: False
+    num_workers: ${num_workers}

@@ -1,0 +1,6 @@
+*.ipynb_che*
+*pycache*
+checkpoints
+outputs
+*.egg-info*
+data/cifar*

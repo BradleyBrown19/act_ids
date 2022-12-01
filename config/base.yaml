@@ -1,0 +1,22 @@
+seed: 0
+base_dir:
+save_dir: ${base_dir}/outputs/${name}
+
+devices: 1
+trainer:
+  _target_: pytorch_lightning.Trainer
+  max_epochs: ${max_epochs}
+  accelerator: gpu
+  devices: ${devices}
+  callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      dirpath: ${save_dir}
+      every_n_train_steps: 100000
+      save_last: True
+    - _target_: pytorch_lightning.callbacks.LearningRateMonitor
+      logging_interval: step
+  logger:
+    _target_: pytorch_lightning.loggers.tensorboard.TensorBoardLogger
+    save_dir: ${save_dir}
+    name: ${name}
+  track_grad_norm: 2

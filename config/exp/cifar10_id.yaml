@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+  - cifar100_id
+
+name: cifar10_id_${add_to_name}
+num_classes: 10
+
+cifar_dataset_target: torchvision.datasets.CIFAR10
+cifar_dataset_path: data/cifar10
